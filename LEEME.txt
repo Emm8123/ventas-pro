@@ -1,0 +1,76 @@
+VENTAS PRO - VERSION WEB (PWA OFFLINE)
+=====================================
+
+Que es
+------
+App de punto de venta en un solo archivo HTML. Funciona 100% sin internet,
+guarda los datos en el propio dispositivo (localStorage) y se puede instalar
+en el celular como una app (icono en la pantalla de inicio).
+
+Archivos
+--------
+index.html     -> la aplicacion completa
+manifest.json  -> datos de la PWA (nombre, iconos, color)
+sw.js          -> service worker (permite funcionar sin internet)
+icons/         -> iconos de la app
+
+Ingresar
+--------
+Usuario: admin
+Clave:   admin
+(se puede cambiar en Ajustes -> Contrasena)
+
+Funciones
+---------
+- Vender (POS): carrito, formas de pago Efectivo / Tarjeta / Transferencia / Fiado
+- Productos, Clientes (con saldo fiado), Proveedores
+- Cobros: cobrar fiado (descuenta saldo y suma a Caja)
+- Compras: suben stock y restan de Caja
+- Gastos e Ingresos: mueven la Caja
+- Caja: saldo y movimientos | Fiados: deuda por cliente
+- Informes con exportacion a CSV, Ajustes, Manual, Backup/Restaurar (JSON)
+
+Reglas de negocio
+-----------------
+- Fiado: exige cliente, suma saldo al cliente y NO toca la Caja
+- Cobrar fiado: baja el saldo y suma a la Caja
+- Compras: suben stock
+- Gastos: restan de la Caja
+
+COMO USARLA EN EL CELULAR
+=========================
+
+Opcion A - Misma red WiFi (rapido, sin internet)
+------------------------------------------------
+1) En la PC (Windows) con este proyecto, ejecutar:
+      python servir_web.py 8080
+   (el archivo servir_web.py esta en ventas-pro-mobile\)
+2) Averiguar la IP de la PC:  ipconfig  -> direccion IPv4 (ej: 192.168.0.15)
+3) En el celular, abrir el navegador y entrar a:
+      http://192.168.0.15:8080
+   La app funciona, pero para "instalar" e ir 100% offline hace falta HTTPS
+   (ver Opcion B).
+
+Opcion B - Hosting con HTTPS (recomendado para iPhone, queda offline)
+---------------------------------------------------------------------
+Subir esta carpeta a cualquier hosting estatico con HTTPS:
+  - Netlify Drop:  https://app.netlify.com/drop   (arrastrar la carpeta, gratis)
+  - Vercel, GitHub Pages, Cloudflare Pages, hostinger, etc.
+Luego en el iPhone:
+  1) Abrir la URL con Safari
+  2) Boton Compartir -> "Agregar a pantalla de inicio"
+  3) Se instala como app y funciona sin internet (service worker).
+
+Notas iPhone
+------------
+- iOS solo instala PWA desde Safari (no Chrome).
+- El service worker requiere HTTPS (o localhost). Netlify/HTTPS = ok.
+
+Backup
+------
+En "Ajustes" -> Exportar respaldo (descarga .json). Para pasar los datos a
+otro celular/PC: importar ese .json en el otro dispositivo.
+
+Windows / Android / iPhone
+--------------------------
+Es una web: funciona en cualquier navegador moderno (Chrome, Safari, Edge).
