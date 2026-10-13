@@ -1,6 +1,15 @@
 VENTAS PRO - VERSION WEB (PWA OFFLINE)
 =====================================
 
+URL PUBLICADA (online, HTTPS)
+-----------------------------
+  https://emm8123.github.io/ventas-pro/
+Abrir ese enlace en el iPhone con Safari -> boton Compartir ->
+"Agregar a pantalla de inicio". Queda como app y funciona SIN internet.
+
+No usa base de datos ni servidor: guarda todo en el propio dispositivo
+(localStorage). No envia datos a ningun lado.
+
 Que es
 ------
 App de punto de venta en un solo archivo HTML. Funciona 100% sin internet,
