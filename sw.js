@@ -1,4 +1,4 @@
-const VPS = 'ventaspro-cache-v2';
+const VPS = 'ventaspro-cache-v3';
 const PRECACHE = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', (e) => {
